@@ -82,6 +82,7 @@ public class MyJsonMessageConverter extends AbstractGenericHttpMessageConverter<
             json=json+(char)i;
             i=reader.read();
         }
+        System.out.println("要解析成为的类："+resolvedType.getTypeName());
         ObjectMapper mapper = new ObjectMapper();
         Object obj = mapper.readValue(json, resolvedType.getClass());
         return obj;
