@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!--spring的用于service的beans容器配置文件-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:application.xml</param-value>
+    </context-param>
+    <!--配置前端控制器   指定controller等的配置文件用于创建前端容器 -->
+    <servlet>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+        <load-on-startup>6</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern><!-- 匹配所有资源，除了.jsp-->
+    </servlet-mapping>
+
+    <!-- 跨域配置方式一 -->
+    <filter>
+        <filter-name>CORS</filter-name>
+        <filter-class>com.juke.config.CORSFilter</filter-class>
+        <!--<init-param>
+            <param-name>cors.allowed.origins</param-name>
+            <param-value>*</param-value> &lt;!&ndash; Allows all origins; replace with specific origins as needed &ndash;&gt;
+        </init-param>
+        <init-param>
+            <param-name>cors.allowed.methods</param-name>
+            <param-value>GET,POST,HEAD,OPTIONS,PUT,DELETE</param-value> &lt;!&ndash; Specify allowed HTTP methods &ndash;&gt;
+        </init-param>
+        <init-param>
+            <param-name>cors.allowed.headers</param-name>
+            <param-value>Content-Type,Authorization,X-Requested-With,Accept,Origin</param-value> &lt;!&ndash; Specify allowed headers &ndash;&gt;
+        </init-param>
+        <init-param>
+            <param-name>cors.exposed.headers</param-name>
+            <param-value>Content-Type,Authorization</param-value> &lt;!&ndash; Specify headers to expose to the client &ndash;&gt;
+        </init-param>
+        <init-param>
+            <param-name>cors.support.credentials</param-name>
+            <param-value>true</param-value> &lt;!&ndash; Whether to allow credentials &ndash;&gt;
+        </init-param>
+        <init-param>
+            <param-name>cors.preflight.maxage</param-name>
+            <param-value>1800</param-value> &lt;!&ndash; Caching preflight responses (in seconds) &ndash;&gt;
+        </init-param>-->
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CORS</filter-name>
+        <url-pattern>/assets/*</url-pattern> <!-- Apply CORS filter to all URLs; modify the pattern as needed -->
+    </filter-mapping>
+    <!--
+        <welcome-file-list>
+            <welcome-file>index.html</welcome-file>
+        </welcome-file-list>-->
+</web-app>

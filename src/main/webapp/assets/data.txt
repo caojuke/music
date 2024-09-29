@@ -1,0 +1,4 @@
+This is Ajax
+It is implimented by XMLHttpRequest object
+Which you can use to update partial elements asynchronously
+without reloading the whole page.
