@@ -47,8 +47,6 @@ public class DataController {
     @ResponseBody
     @RequestMapping("xhr2")
     public String testXHR2(@RequestBody SimpleObj obj,HttpServletRequest request,HttpServletResponse response){
-        System.out.println("data =  : "+obj);
-        System.out.println(response.getContentType());
         return new SimpleObj("success").toString();
     }
 
