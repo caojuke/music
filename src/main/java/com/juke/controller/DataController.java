@@ -25,7 +25,7 @@ public class DataController {
         System.out.println("callback = "+callback);
         response.setCharacterEncoding("utf-8");
         response.setContentType("utf-8");
-        return callback+"({\"content\":\"data\"});";
+        return callback+"({\"content\":\"data to remote\"});";
     }
     @ResponseBody
     @RequestMapping("registerUser")
