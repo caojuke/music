@@ -41,8 +41,6 @@ public class DataController {
     @RequestMapping("xhr")
     public SimpleObj testXHR(@RequestBody SimpleObj obj,HttpServletRequest request,HttpServletResponse response){
         System.out.println("data =  : "+obj);
-        /*response.setCharacterEncoding("utf-8");
-        response.setContentType("application/json");*/
         return new SimpleObj("success");
     }
 
@@ -50,8 +48,6 @@ public class DataController {
     @RequestMapping("xhr2")
     public String testXHR2(@RequestBody SimpleObj obj,HttpServletRequest request,HttpServletResponse response){
         System.out.println("data =  : "+obj);
-        /*response.setCharacterEncoding("utf-8");
-        response.setContentType("application/json");*/
         System.out.println(response.getContentType());
         return new SimpleObj("success").toString();
     }
